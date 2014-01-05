@@ -1,8 +1,8 @@
 <?
-$srv_port = "8443";
-$srv_https = "on";
+$srv_port = "80";
+$srv_https = "";
 $srv_dir = "/usr/share/FruityWifi/www/modules/autostart/includes";
-$web_path = "";
+$web_path = "/FruityWifi";
 $logs = "/usr/share/FruityWifi/logs/autostart.log";
 
 if ($srv_https == "on") {
