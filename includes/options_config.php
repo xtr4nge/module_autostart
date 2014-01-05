@@ -1,8 +1,8 @@
 <?
 // CHECKBOX
 $opt_responder["S1"][0] = 1;
-$opt_responder["S2"][0] = 1;
-$opt_responder["S3"][0] = 1;
+$opt_responder["S2"][0] = 0;
+$opt_responder["S3"][0] = 0;
 $opt_responder["M1"][0] = 0;
 $opt_responder["M2"][0] = 0;
 $opt_responder["M3"][0] = 0;
