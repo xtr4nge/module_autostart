@@ -1,6 +1,6 @@
 <? 
 /*
-	Copyright (C) 2013  xtr4nge [_AT_] gmail.com
+	Copyright (C) 2013-2014  xtr4nge [_AT_] gmail.com
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -46,6 +46,7 @@ $(function() {
 
 include "_info_.php";
 include "../../config/config.php";
+include "../../login_check.php";
 include "../../functions.php";
 
 // Checking POST & GET variables...
@@ -141,12 +142,12 @@ Loading, please wait...
 
         <!-- OPTIONS -->
 
-        <div id="result-2">
+        <div id="result-2" class="module-options">
             <form id="formInject" name="formInject" method="POST" autocomplete="off" action="includes/save.php">
             <input type="submit" value="save">
             <br><br>
             
-            <div class="module" style="background-color:#000; border:1px dashed;">
+            <div class="module-options" s-tyle="background-color:#000; border:1px dashed;">
             <table>
                 <!-- // OPTION S1:Wireless --> 
                 <tr>
@@ -227,9 +228,30 @@ Loading, please wait...
                     <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
                     <td nowrap></td>
                 </tr>
-                <!-- // OPTION M9:Phishing --> 
+                <!-- // OPTION M9:Responder --> 
                 <tr>
                     <? $opt = "M9"; ?>
+                    <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
+                    <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
+                    <td nowrap></td>
+                </tr>
+				<!-- // OPTION M10:Tcpdump --> 
+                <tr>
+                    <? $opt = "M10"; ?>
+                    <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
+                    <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
+                    <td nowrap></td>
+                </tr>
+				<!-- // OPTION M11:Ettercap --> 
+                <tr>
+                    <? $opt = "M11"; ?>
+                    <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
+                    <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
+                    <td nowrap></td>
+                </tr>
+				<!-- // OPTION M12:Autossh --> 
+                <tr>
+                    <? $opt = "M12"; ?>
                     <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
                     <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
                     <td nowrap></td>

@@ -12,6 +12,9 @@ $opt_responder["M6"][0] = 0;
 $opt_responder["M7"][0] = 0;
 $opt_responder["M8"][0] = 0;
 $opt_responder["M9"][0] = 0;
+$opt_responder["M10"][0] = 0;
+$opt_responder["M11"][0] = 0;
+$opt_responder["M12"][0] = 0;
 
 // Alias
 $opt_responder["S1"][2] = "Wireless";
@@ -26,6 +29,9 @@ $opt_responder["M6"][2] = "Kismet";
 $opt_responder["M7"][2] = "Captive";
 $opt_responder["M8"][2] = "URLSnarf";
 $opt_responder["M9"][2] = "Responder";
+$opt_responder["M10"][2] = "Tcpdump";
+$opt_responder["M11"][2] = "Ettercap";
+$opt_responder["M12"][2] = "Autossh";
 
 // Action URL
 $opt_responder["S1"][3] = "/scripts/status_wireless.php?service=wireless&action=start";
@@ -40,6 +46,9 @@ $opt_responder["M6"][3] = "/modules/kismet/includes/module_action.php?service=ki
 $opt_responder["M7"][3] = "/modules/captive/includes/module_action.php?service=captive&action=start&page=status";
 $opt_responder["M8"][3] = "/modules/urlsnarf/includes/module_action.php?service=urlsnarf&action=start&page=status";
 $opt_responder["M9"][3] = "/modules/responder/includes/module_action.php?service=responder&action=start&page=status";
+$opt_responder["M10"][3] = "/modules/tcpdump/includes/module_action.php?service=responder&action=start&page=status";
+$opt_responder["M11"][3] = "/modules/ettercap/includes/module_action.php?service=responder&action=start&page=status";
+$opt_responder["M12"][3] = "/modules/autossh/includes/module_action.php?service=responder&action=start&page=status";
 
 /*
 $opt_responder["S1"][3] = "https://localhost/scripts/status_wireless.php?service=wireless&action=start";
@@ -68,5 +77,8 @@ $opt_responder["M6"][1] = 0;
 $opt_responder["M7"][1] = 0;
 $opt_responder["M8"][1] = 0;
 $opt_responder["M9"][1] = 0;
+$opt_responder["M10"][1] = 0;
+$opt_responder["M11"][1] = 0;
+$opt_responder["M12"][1] = 0;
 
 ?>

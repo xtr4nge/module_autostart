@@ -1,8 +1,9 @@
 <?
 $mod_name="autostart";
-$mod_version="1.0";
+$mod_version="1.1";
 $mod_logs="/usr/share/FruityWifi/logs/autostart.log"; 
 $mod_logs_history="/usr/share/FruityWifi/www/modules/autostart/includes/logs/";
+$mod_logs_panel="disabled";
 $mod_path="/usr/share/FruityWifi/www/modules/autostart";
 $mod_panel="show";
 $mod_isup="grep 'FruityWifi-autostart.php' /etc/rc.local";

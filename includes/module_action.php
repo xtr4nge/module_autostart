@@ -29,7 +29,6 @@ if ($regex == 1) {
     regex_standard($_GET["service"], "../msg.php", $regex_extra);
     regex_standard($_GET["action"], "../msg.php", $regex_extra);
     regex_standard($_GET["page"], "../msg.php", $regex_extra);
-    regex_standard($iface_wifi, "../msg.php", $regex_extra);
     regex_standard($_GET["install"], "../msg.php", $regex_extra);
 }
 
@@ -75,6 +74,16 @@ if($service != "") {
         $exec = "grep 'FruityWifi-autostart.php' /etc/rc.local";
         $isautostart = exec($exec);
         if ($isautostart  == "") {
+			
+			// Check if 'exit 0' exists in rc.local
+			$exec = "grep '^exit 0' /etc/rc.local";
+			$isexit = exec($exec);
+			if ($isexit  == "") {
+				$exec = "echo 'exit 0' >> /etc/rc.local";
+				exec("$bin_danger \"$exec\"" );
+			} 
+			
+			// Insert Autostart in rc.local
             $exec = "sed -i '/FruityWifi-autostart.php/d' /etc/rc.local";
             exec("$bin_danger \"$exec\"" );
             
