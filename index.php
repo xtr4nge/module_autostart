@@ -164,100 +164,141 @@ Loading, please wait...
                     <td><?=$opt_responder[$opt][2]?></td>
                     <td nowrap></td>
                 </tr>
-                <!-- // OPTION S3:Phishing --> 
+                <!-- // OPTION S3:Mana --> 
                 <tr>
                     <? $opt = "S3"; ?>
                     <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
                     <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
                     <td nowrap></td>
                 </tr>
+                 <!-- // OPTION S4:Supplicant --> 
+                <tr>
+                    <? $opt = "S4"; ?>
+                    <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
+                    <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
+                    <td nowrap></td>
+                </tr>               
                 
-                
-                <!-- // OPTION M1:Phishing --> 
+                <!-- // OPTION M1:ngrep --> 
                 <tr>
                     <? $opt = "M1"; ?>
                     <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
                     <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
                     <td nowrap></td>
                 </tr>
-                <!-- // OPTION M2:Phishing --> 
+                <!-- // OPTION M2:SSLStrip --> 
                 <tr>
                     <? $opt = "M2"; ?>
                     <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
                     <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
                     <td nowrap></td>
                 </tr>
-                <!-- // OPTION M3:Phishing --> 
+                <!-- // OPTION M3:DNSSpoof --> 
                 <tr>
                     <? $opt = "M3"; ?>
                     <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
                     <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
                     <td nowrap></td>
                 </tr>
-                <!-- // OPTION M4:Phishing --> 
+                <!-- // OPTION M4:MDK3 --> 
                 <tr>
                     <? $opt = "M4"; ?>
                     <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
                     <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
                     <td nowrap></td>
                 </tr>
-                <!-- // OPTION M5:Phishing --> 
+                <!-- // OPTION M5:Squid3 --> 
                 <tr>
                     <? $opt = "M5"; ?>
                     <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
                     <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
                     <td nowrap></td>
                 </tr>
-                <!-- // OPTION M6:Phishing --> 
+                <!-- // OPTION M6:Kismet --> 
                 <tr>
                     <? $opt = "M6"; ?>
                     <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
                     <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
                     <td nowrap></td>
                 </tr>
-                <!-- // OPTION M7:Phishing --> 
+                <!-- // OPTION M7:Captive --> 
                 <tr>
                     <? $opt = "M7"; ?>
                     <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
                     <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
                     <td nowrap></td>
                 </tr>
-                <!-- // OPTION M8:Phishing --> 
+                <!-- // OPTION M8:URLSnarf --> 
                 <tr>
                     <? $opt = "M8"; ?>
                     <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
                     <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
                     <td nowrap></td>
                 </tr>
-                <!-- // OPTION M9:Responder --> 
+                <!-- // OPTION M9:Tcpdump --> 
                 <tr>
                     <? $opt = "M9"; ?>
                     <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
                     <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
                     <td nowrap></td>
                 </tr>
-				<!-- // OPTION M10:Tcpdump --> 
+				<!-- // OPTION M10:Ettercap --> 
                 <tr>
                     <? $opt = "M10"; ?>
                     <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
                     <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
                     <td nowrap></td>
                 </tr>
-				<!-- // OPTION M11:Ettercap --> 
+				<!-- // OPTION M11:Autossh --> 
                 <tr>
                     <? $opt = "M11"; ?>
                     <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
                     <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
                     <td nowrap></td>
                 </tr>
-				<!-- // OPTION M12:Autossh --> 
+				<!-- // OPTION M12:Rpitwit --> 
                 <tr>
                     <? $opt = "M12"; ?>
                     <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
                     <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
                     <td nowrap></td>
                 </tr>
-                
+                <!-- // OPTION M13:Whatsapp --> 
+                <tr>
+                    <? $opt = "M13"; ?>
+                    <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
+                    <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
+                    <td nowrap></td>
+                </tr>
+                <!-- // OPTION M14:3g_4g --> 
+                <tr>
+                    <? $opt = "M14"; ?>
+                    <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
+                    <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
+                    <td nowrap></td>
+                </tr>
+                <!-- // OPTION M15:Nessus --> 
+                <tr>
+                    <? $opt = "M15"; ?>
+                    <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
+                    <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
+                    <td nowrap></td>
+                </tr>
+                <!-- // OPTION M16:Tor --> 
+                <tr>
+                    <? $opt = "M16"; ?>
+                    <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
+                    <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
+                    <td nowrap></td>
+                </tr>
+                <!-- // OPTION M17:Phishing --> 
+                <tr>
+                    <? $opt = "M17"; ?>
+                    <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
+                    <td style="padding-right:10px"><?=$opt_responder[$opt][2]?></td>
+                    <td nowrap></td>
+                </tr>
+               				
             </table>
             </div>
 
