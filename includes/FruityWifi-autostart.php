@@ -5,6 +5,7 @@ $srv_dir = "/usr/share/fruitywifi/www/modules/autostart/includes";
 //$web_path = "/FruityWifi";
 $web_path = "";
 $logs = "/usr/share/fruitywifi/logs/autostart.log";
+$token = "e5dab9a69988dd65e578041416773149ea57a054";
 
 if ($srv_https == "on") {
     $protocol = "https";
@@ -13,7 +14,7 @@ if ($srv_https == "on") {
 }
 
 //$post_data = 'user=admin&pass=admin';
-$post_data = "";
+$post_data = "token=$token";
 $agent = "Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.1.7) Gecko/20100105 Shiretoko/3.5.7";
 $login_url = "$protocol://localhost$web_path/login.php";
 
@@ -46,9 +47,7 @@ for ($i=0; $i< count($tmp); $i++) {
 	
 	$opt = "M".$i;
     if ($opt_responder[$opt][0] == 1) {
-        //echo "$protocol://localhost$web_path".$opt_responder[$opt][2] . "\n";
-        //echo "$protocol://localhost$web_path".$opt_responder[$opt][3] . "\n";
-        
+
         // EXEC CURL
         $url = "$protocol://localhost$web_path".$opt_responder[$opt][3];
         curl_setopt($ch, CURLOPT_URL, $url);
