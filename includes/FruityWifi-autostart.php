@@ -43,17 +43,19 @@ exec($exec);
 
 $tmp = array_keys($opt_responder);
 for ($i=0; $i< count($tmp); $i++) {
-    if ($opt_responder[$tmp[$i]][0] == 1) {
-        //echo "$protocol://localhost$web_path".$opt_responder[$tmp[$i]][2] . "\n";
-        //echo "$protocol://localhost$web_path".$opt_responder[$tmp[$i]][3] . "\n";
+	
+	$opt = "M".$i;
+    if ($opt_responder[$opt][0] == 1) {
+        //echo "$protocol://localhost$web_path".$opt_responder[$opt][2] . "\n";
+        //echo "$protocol://localhost$web_path".$opt_responder[$opt][3] . "\n";
         
         // EXEC CURL
-        $url = "$protocol://localhost$web_path".$opt_responder[$tmp[$i]][3];
+        $url = "$protocol://localhost$web_path".$opt_responder[$opt][3];
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_exec($ch);
         
         //LOGS
-        $exec = "echo '- (enabled) ".$opt_responder[$tmp[$i]][2]." ' >> $logs";
+        $exec = "echo '- (enabled) ".$opt_responder[$opt][2]." ' >> $logs";
         exec($exec);
     }
 }
