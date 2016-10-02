@@ -89,7 +89,7 @@ if($service != "") {
             //exec("$bin_danger \"$exec\"" ); //DEPRECATED
             exec_fruitywifi($exec);
             
-            $exec = "sed -i 's/^exit 0/php $srv_dir\/FruityWifi-autostart.php\\nexit 0/g' /etc/rc.local";
+            $exec = "sed -i 's/^exit 0/php -d short_open_tag=on $srv_dir\/FruityWifi-autostart.php\\nexit 0/g' /etc/rc.local";
             //exec("$bin_danger \"$exec\"" ); //DEPRECATED
             exec_fruitywifi($exec);
             
