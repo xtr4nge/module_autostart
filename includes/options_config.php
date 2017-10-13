@@ -12,7 +12,7 @@ $opt_responder["M0"][1] = 0;
 $opt_responder["M0"][2] = "3G / 4G";
 $opt_responder["M0"][3] = "/modules/3g_4g/includes/module_action.php?service=3g_4g&action=start&page=status";
 
-$opt_responder["M1"][0] = 1;
+$opt_responder["M1"][0] = 0;
 $opt_responder["M1"][1] = 0;
 $opt_responder["M1"][2] = "Wireless [AP]";
 $opt_responder["M1"][3] = "/modules/ap/includes/module_action.php?service=ap&action=start&page=status";
@@ -79,7 +79,7 @@ $opt_responder["M13"][1] = 0;
 $opt_responder["M13"][2] = "DNSspoof";
 $opt_responder["M13"][3] = "/modules/dnsspoof/includes/module_action.php?service=dnsspoof&action=start&page=status";
 
-$opt_responder["M14"][0] = 1;
+$opt_responder["M14"][0] = 0;
 $opt_responder["M14"][1] = 0;
 $opt_responder["M14"][2] = "Bettercap";
 $opt_responder["M14"][3] = "/modules/bettercap/includes/module_action.php?service=bettercap&action=start&page=status";
