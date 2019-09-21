@@ -1,6 +1,6 @@
 <? 
 /*
-	Copyright (C) 2013 xtr4nge [_AT_] gmail.com
+	Copyright (C) 2013-2019 xtr4nge [_AT_] gmail.com
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -50,28 +50,23 @@ if($service != "") {
         $web_path = str_replace("/","\\/",$web_path);
         $logs = str_replace("/","\\/",$mod_logs);
         
-        $exec = "$bin_sed -i 's/^\\\$srv_port =.*/\\\$srv_port = \\\"$srv_port\\\";/g' FruityWifi-autostart.php";
-        //exec("$bin_danger \"" . $exec . "\""); //DEPRECATED
+        $exec = "$bin_sed -i 's/^\\\$srv_port =.*/\\\$srv_port = \\\"$srv_port\\\";/g' FruityWiFi-autostart.php";
         exec_fruitywifi($exec);
         
-        $exec = "$bin_sed -i 's/^\\\$srv_https =.*/\\\$srv_https = \\\"$srv_https\\\";/g' FruityWifi-autostart.php";
-        //exec("$bin_danger \"" . $exec . "\""); //DEPRECATED
+        $exec = "$bin_sed -i 's/^\\\$srv_https =.*/\\\$srv_https = \\\"$srv_https\\\";/g' FruityWiFi-autostart.php";
         exec_fruitywifi($exec);
         
-        $exec = "$bin_sed -i 's/^\\\$srv_dir =.*/\\\$srv_dir = \\\"$srv_dir\\\";/g' FruityWifi-autostart.php";
-        //exec("$bin_danger \"" . $exec . "\""); //DEPRECATED
+        $exec = "$bin_sed -i 's/^\\\$srv_dir =.*/\\\$srv_dir = \\\"$srv_dir\\\";/g' FruityWiFi-autostart.php";
         exec_fruitywifi($exec);
         
-        $exec = "$bin_sed -i 's/^\\\$web_path =.*/\\\$web_path = \\\"$web_path\\\";/g' FruityWifi-autostart.php";
-        //exec("$bin_danger \"" . $exec . "\""); //DEPRECATED
+        $exec = "$bin_sed -i 's/^\\\$web_path =.*/\\\$web_path = \\\"$web_path\\\";/g' FruityWiFi-autostart.php";
         exec_fruitywifi($exec);
     
-        $exec = "$bin_sed -i 's/^\\\$logs =.*/\\\$logs = \\\"$logs\\\";/g' FruityWifi-autostart.php";
-        //exec("$bin_danger \"" . $exec . "\""); //DEPRECATED
+        $exec = "$bin_sed -i 's/^\\\$logs =.*/\\\$logs = \\\"$logs\\\";/g' FruityWiFi-autostart.php";
         exec_fruitywifi($exec);
     
         // INCLUDE rc.local
-        $exec = "grep 'FruityWifi-autostart.php' /etc/rc.local";
+        $exec = "grep 'FruityWiFi-autostart.php' /etc/rc.local";
         $isautostart = exec($exec);
         if ($isautostart  == "") {
 			
@@ -80,17 +75,14 @@ if($service != "") {
 			$isexit = exec($exec);
 			if ($isexit  == "") {
 				$exec = "echo 'exit 0' >> /etc/rc.local";
-				//exec("$bin_danger \"$exec\"" ); //DEPRECATED
                 exec_fruitywifi($exec);
 			} 
 			
 			// Insert Autostart in rc.local
-            $exec = "sed -i '/FruityWifi-autostart.php/d' /etc/rc.local";
-            //exec("$bin_danger \"$exec\"" ); //DEPRECATED
+            $exec = "sed -i '/FruityWiFi-autostart.php/d' /etc/rc.local";
             exec_fruitywifi($exec);
             
-            $exec = "sed -i 's/^exit 0/php $srv_dir\/FruityWifi-autostart.php\\nexit 0/g' /etc/rc.local";
-            //exec("$bin_danger \"$exec\"" ); //DEPRECATED
+            $exec = "sed -i 's/^exit 0/php $srv_dir\/FruityWiFi-autostart.php\\nexit 0/g' /etc/rc.local";
             exec_fruitywifi($exec);
             
         }
@@ -98,11 +90,9 @@ if($service != "") {
         // COPY LOG
         if ( 0 < filesize( $mod_logs ) ) {
             $exec = "$bin_cp $mod_logs $mod_logs_history/".gmdate("Ymd-H-i-s").".log";
-            //exec("$bin_danger \"$exec\"" ); //DEPRECATED
             exec_fruitywifi($exec);
             
             $exec = "$bin_echo '' > $mod_logs";
-            //exec("$bin_danger \"$exec\"" ); //DEPRECATED
             exec_fruitywifi($exec);
         }
     
@@ -110,18 +100,15 @@ if($service != "") {
     } else if($action == "stop") {
         
         // REMOVE from rc.local
-        $exec = "sed -i '/FruityWifi-autostart.php/d' /etc/rc.local";
-        //exec("$bin_danger \"$exec\"" ); //DEPRECATED
+        $exec = "sed -i '/FruityWiFi-autostart.php/d' /etc/rc.local";
         exec_fruitywifi($exec);
             
         // COPY LOG
         if ( 0 < filesize( $mod_logs ) ) {
             $exec = "$bin_cp $mod_logs $mod_logs_history/".gmdate("Ymd-H-i-s").".log";
-            //exec("$bin_danger \"$exec\"" ); //DEPRECATED
             exec_fruitywifi($exec);
             
             $exec = "$bin_echo '' > $mod_logs";
-            //exec("$bin_danger \"$exec\"" ); //DEPRECATED
             exec_fruitywifi($exec);
         }
 
@@ -132,11 +119,9 @@ if($service != "") {
 if ($install == "install_autostart") {
 
     $exec = "chmod 755 install.sh";
-    //exec("$bin_danger \"$exec\"" ); //DEPRECATED
     exec_fruitywifi($exec);
 
     $exec = "$bin_sudo ./install.sh > $log_path/install.txt &";
-    //exec("$bin_danger \"$exec\"" ); //DEPRECATED
     exec_fruitywifi($exec);
 
     header('Location: ../../install.php?module=autostart');

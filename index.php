@@ -1,6 +1,6 @@
 <? 
 /*
-	Copyright (C) 2013-2014 xtr4nge [_AT_] gmail.com
+	Copyright (C) 2013-2019 xtr4nge [_AT_] gmail.com
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -20,12 +20,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>FruityWifi</title>
+<title>FruityWiFi</title>
 <script src="../js/jquery.js"></script>
 <script src="../js/jquery-ui.js"></script>
 <link rel="stylesheet" href="../css/jquery-ui.css" />
 <link rel="stylesheet" href="../css/style.css" />
 <link rel="stylesheet" href="../../../style.css" />
+<link rel="icon" type="image/x-icon" href="img/favicon.ico"/>
 
 <script>
 $(function() {
@@ -66,7 +67,6 @@ $service = $_POST["service"];
 // DELETE LOG
 if ($logfile != "" and $action == "delete") {
     $exec = "$bin_rm ".$mod_logs_history.$logfile.".log";
-    //exec("$bin_danger \"$exec\"", $dump); //DEPRECATED
     exec_fruitywifi($exec);
 }
 
@@ -79,8 +79,9 @@ include "includes/options_config.php";
 
     &nbsp;&nbsp;version <?=$mod_version?><br>
     <? 
-    $isinstalled = exec("dpkg-query -s php5-curl|grep -iEe '^status.+installed'");
-    if ($isinstalled != "") {
+    $isinstalled_curl = exec("dpkg-query -s php-curl|grep -iEe '^status.+installed'");
+    $isinstalled_cli = exec("dpkg-query -s php-cli|grep -iEe '^status.+installed'");
+    if ($isinstalled_curl != "" && $isinstalled_cli != "") {
         echo "$mod_alias <font style='color:lime'>installed</font><br>";
     } else {
         echo "$mod_alias <a href='includes/module_action.php?install=install_autostart' style='color:red'>install</a><br>";
@@ -88,7 +89,7 @@ include "includes/options_config.php";
     ?>
     
     <?
-    $ismoduleup = exec("grep 'FruityWifi-autostart.php' /etc/rc.local");
+    $ismoduleup = exec($mod_isup);
     if ($ismoduleup != "") {
         echo "$mod_alias  <font color=\"lime\"><b>enabled</b></font>.&nbsp; | <a href=\"includes/module_action.php?service=responder&action=stop&page=module\"><b>stop</b></a>";
     } else { 
@@ -110,14 +111,15 @@ Loading, please wait...
 
     <div id="result" class="module">
         <ul>
-            <li><a href="#result-1">Output</a></li>
-            <li><a href="#result-2">Options</a></li>
-            <li><a href="#result-3">History</a></li>
+            <li><a href="#tab-output">Output</a></li>
+            <li><a href="#tab-options">Options</a></li>
+            <li><a href="#tab-history">History</a></li>
+            <li><a href="#tab-about">About</a></li>
         </ul>
         
         <!-- OUTPUT -->
 
-        <div id="result-1">
+        <div id="tab-output">
             <form id="formLogs-Refresh" name="formLogs-Refresh" method="POST" autocomplete="off" action="index.php">
             <input type="submit" value="refresh">
             <br><br>
@@ -143,12 +145,12 @@ Loading, please wait...
 
         <!-- OPTIONS -->
 
-        <div id="result-2" class="module-options">
+        <div id="tab-options" class="module-options">
             <form id="formInject" name="formInject" method="POST" autocomplete="off" action="includes/save.php">
             <input type="submit" value="save">
             <br><br>
             
-            <div class="module-options" s-tyle="background-color:#000; border:1px dashed;">
+            <div c-lass="module-options" s-tyle="background-color:#000; border:1px dashed;">
             <table>
 				
 				<?
@@ -160,7 +162,7 @@ Loading, please wait...
 						
 						<tr>
 							<td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
-							<td><?=$opt_responder[$opt][2]?></td>
+							<td> .<?=$opt_responder[$opt][2]?></td>
 							<td></td>
 						</tr>
 				<?
@@ -184,7 +186,7 @@ Loading, please wait...
 
         <!-- HISTORY -->
 
-        <div id="result-3">
+        <div id="tab-history">
             <input type="submit" value="refresh">
             <br><br>
             
@@ -202,6 +204,16 @@ Loading, please wait...
             ?>
             
         </div>
+        
+        <!-- END HISTORY -->  
+        
+        <!-- ABOUT -->
+    
+        <div id="tab-about" class="history">
+            <? include "includes/about.php"; ?>
+        </div>
+        
+        <!-- END ABOUT -->  
         
     </div>
 
@@ -230,7 +242,7 @@ Loading, please wait...
         });
         
         $('#output').html('');
-        $('#loading').show()
+        $('#loading').show();
 
     });
 
@@ -262,7 +274,7 @@ Loading, please wait...
         });
         
         $('#output').html('');
-        $('#loading').show()
+        $('#loading').show();
 
     });
 
@@ -292,7 +304,7 @@ Loading, please wait...
         });
         
         $('#output').html('');
-        $('#loading').show()
+        $('#loading').show();
 
     });
 

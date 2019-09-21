@@ -1,8 +1,8 @@
 #!/bin/bash
 
-echo "installing php5-curl..."
+echo "installing php-curl & php-cli..."
 
-apt-get -f install php5-curl php5-cli
+apt-get -y install php-curl php-cli
 
 echo "..DONE.."
 exit
