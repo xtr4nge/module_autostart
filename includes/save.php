@@ -9,13 +9,13 @@ include "options_config.php";
 
 // Checking POST & GET variables...
 if ($regex == 1) {
-	regex_standard($_POST['type'], "../../../msg.php", $regex_extra);
-	regex_standard($_POST['tempname'], "../../../msg.php", $regex_extra);
-	regex_standard($_POST['action'], "../../../msg.php", $regex_extra);
-	regex_standard($_GET['mod_action'], "../../../msg.php", $regex_extra);
-	regex_standard($_GET['mod_service'], "../../../msg.php", $regex_extra);
-	regex_standard($_POST['new_rename'], "../../../msg.php", $regex_extra);
-	regex_standard($_POST['new_rename_file'], "../../../msg.php", $regex_extra);
+    regex_standard($_POST['type'], "../../../msg.php", $regex_extra);
+    regex_standard($_POST['tempname'], "../../../msg.php", $regex_extra);
+    regex_standard($_POST['action'], "../../../msg.php", $regex_extra);
+    regex_standard($_GET['mod_action'], "../../../msg.php", $regex_extra);
+    regex_standard($_GET['mod_service'], "../../../msg.php", $regex_extra);
+    regex_standard($_POST['new_rename'], "../../../msg.php", $regex_extra);
+    regex_standard($_POST['new_rename_file'], "../../../msg.php", $regex_extra);
 }
 
 $type = $_POST['type'];

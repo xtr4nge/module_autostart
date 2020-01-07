@@ -1,19 +1,19 @@
 <?
 /*
-	Copyright (C) 2013-2019 xtr4nge [_AT_] gmail.com
+    Copyright (C) 2013-2019 xtr4nge [_AT_] gmail.com
 
-	This program is free software: you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
 
-	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 ?>
 <!DOCTYPE HTML>
@@ -52,7 +52,7 @@ include "../../functions.php";
 
 // Checking POST & GET variables...
 if ($regex == 1) {
-	regex_standard($_POST["newdata"], "msg.php", $regex_extra);
+    regex_standard($_POST["newdata"], "msg.php", $regex_extra);
     regex_standard($_GET["logfile"], "msg.php", $regex_extra);
     regex_standard($_GET["action"], "msg.php", $regex_extra);
     regex_standard($_POST["service"], "msg.php", $regex_extra);
@@ -153,21 +153,21 @@ Loading, please wait...
             <div c-lass="module-options" s-tyle="background-color:#000; border:1px dashed;">
             <table>
 
-				<?
-					$tmp = array_keys($opt_responder);
-					for ($i=0; $i< count($tmp); $i++) {
+                <?
+                    $tmp = array_keys($opt_responder);
+                    for ($i=0; $i< count($tmp); $i++) {
 
-						$opt = "M".$i;
-						?>
+                        $opt = "M".$i;
+                        ?>
 
-						<tr>
-							<td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
-							<td> .<?=$opt_responder[$opt][2]?></td>
-							<td></td>
-						</tr>
-				<?
-					}
-				?>
+                        <tr>
+                            <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
+                            <td> .<?=$opt_responder[$opt][2]?></td>
+                            <td></td>
+                        </tr>
+                <?
+                    }
+                ?>
 
             </table>
             </div>
