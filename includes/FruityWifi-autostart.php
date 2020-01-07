@@ -31,7 +31,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookie.txt');
 #curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookie.txt');
- 
+
 //Execute the action to login
 $output = curl_exec($ch);
 
@@ -44,7 +44,7 @@ exec($exec);
 
 $tmp = array_keys($opt_responder);
 for ($i=0; $i< count($tmp); $i++) {
-	
+
 	$opt = "M".$i;
     if ($opt_responder[$opt][0] == 1) {
 
@@ -52,7 +52,7 @@ for ($i=0; $i< count($tmp); $i++) {
         $url = "$protocol://localhost$web_path".$opt_responder[$opt][3];
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_exec($ch);
-        
+
         //LOGS
         $exec = "echo '- (enabled) ".$opt_responder[$opt][2]." ' >> $logs";
         exec($exec);

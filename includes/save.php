@@ -33,28 +33,28 @@ if ($type == "opt_responder") {
 
     $tmp = array_keys($opt_responder);
     for ($i=0; $i< count($tmp); $i++) {
-        
+
         $exec = "/bin/sed -i 's/opt_responder\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\].*/opt_responder\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\] = 0;/g' options_config.php";
         //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
         $output = exec_fruitywifi($exec);
-        
+
         $exec = "/bin/sed -i 's/^".$tmp[$i].".*/".$tmp[$i]." = Off/g' Responder-master/Responder.conf";
         //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
         $output = exec_fruitywifi($exec);
-        
+
     }
 
     $tmp = $_POST["options"];
     for ($i=0; $i< count($tmp); $i++) {
-        
+
         $exec = "/bin/sed -i 's/opt_responder\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\].*/opt_responder\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\] = 1;/g' options_config.php";
         //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
         exec_fruitywifi($exec);
-        
+
         $exec = "/bin/sed -i 's/^".$tmp[$i].".*/".$tmp[$i]." = On/g' Responder-master/Responder.conf";
         //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
         exec_fruitywifi($exec);
-        
+
     }
 
     header('Location: ../index.php?tab=1');

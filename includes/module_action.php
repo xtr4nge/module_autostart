@@ -1,4 +1,4 @@
-<? 
+<?
 /*
 	Copyright (C) 2013-2019 xtr4nge [_AT_] gmail.com
 
@@ -14,7 +14,7 @@
 
 	You should have received a copy of the GNU General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/ 
+*/
 ?>
 <?
 //include "../login_check.php";
@@ -38,7 +38,7 @@ $page = $_GET['page'];
 $install = $_GET['install'];
 
 if($service != "") {
-    
+
     if ($action == "start") {
 
         $srv_https = $_SERVER["HTTPS"];
@@ -49,65 +49,65 @@ if($service != "") {
         $web_path = substr($srv_php_self, 0, strpos($srv_php_self, "/modules/"));
         $web_path = str_replace("/","\\/",$web_path);
         $logs = str_replace("/","\\/",$mod_logs);
-        
+
         $exec = "$bin_sed -i 's/^\\\$srv_port =.*/\\\$srv_port = \\\"$srv_port\\\";/g' FruityWiFi-autostart.php";
         exec_fruitywifi($exec);
-        
+
         $exec = "$bin_sed -i 's/^\\\$srv_https =.*/\\\$srv_https = \\\"$srv_https\\\";/g' FruityWiFi-autostart.php";
         exec_fruitywifi($exec);
-        
+
         $exec = "$bin_sed -i 's/^\\\$srv_dir =.*/\\\$srv_dir = \\\"$srv_dir\\\";/g' FruityWiFi-autostart.php";
         exec_fruitywifi($exec);
-        
+
         $exec = "$bin_sed -i 's/^\\\$web_path =.*/\\\$web_path = \\\"$web_path\\\";/g' FruityWiFi-autostart.php";
         exec_fruitywifi($exec);
-    
+
         $exec = "$bin_sed -i 's/^\\\$logs =.*/\\\$logs = \\\"$logs\\\";/g' FruityWiFi-autostart.php";
         exec_fruitywifi($exec);
-    
+
         // INCLUDE rc.local
         $exec = "grep 'FruityWiFi-autostart.php' /etc/rc.local";
         $isautostart = exec($exec);
         if ($isautostart  == "") {
-			
+
 			// Check if 'exit 0' exists in rc.local
 			$exec = "grep '^exit 0' /etc/rc.local";
 			$isexit = exec($exec);
 			if ($isexit  == "") {
 				$exec = "echo 'exit 0' >> /etc/rc.local";
                 exec_fruitywifi($exec);
-			} 
-			
+			}
+
 			// Insert Autostart in rc.local
             $exec = "sed -i '/FruityWiFi-autostart.php/d' /etc/rc.local";
             exec_fruitywifi($exec);
-            
+
             $exec = "sed -i 's/^exit 0/php $srv_dir\/FruityWiFi-autostart.php\\nexit 0/g' /etc/rc.local";
             exec_fruitywifi($exec);
-            
+
         }
 
         // COPY LOG
         if ( 0 < filesize( $mod_logs ) ) {
             $exec = "$bin_cp $mod_logs $mod_logs_history/".gmdate("Ymd-H-i-s").".log";
             exec_fruitywifi($exec);
-            
+
             $exec = "$bin_echo '' > $mod_logs";
             exec_fruitywifi($exec);
         }
-    
-    
+
+
     } else if($action == "stop") {
-        
+
         // REMOVE from rc.local
         $exec = "sed -i '/FruityWiFi-autostart.php/d' /etc/rc.local";
         exec_fruitywifi($exec);
-            
+
         // COPY LOG
         if ( 0 < filesize( $mod_logs ) ) {
             $exec = "$bin_cp $mod_logs $mod_logs_history/".gmdate("Ymd-H-i-s").".log";
             exec_fruitywifi($exec);
-            
+
             $exec = "$bin_echo '' > $mod_logs";
             exec_fruitywifi($exec);
         }
