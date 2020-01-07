@@ -1,4 +1,4 @@
-<?
+<?php
 /*
     Copyright (C) 2013-2019 xtr4nge [_AT_] gmail.com
 
@@ -39,16 +39,17 @@ $(function() {
 </head>
 <body>
 
-<? include "../menu.php"; ?>
+<?php
+require("../menu.php");
+?>
 
 <br>
 
-<?
-
-include "../../config/config.php";
-include "../../login_check.php";
-include "_info_.php";
-include "../../functions.php";
+<?php
+require("../../config/config.php");
+require("../../login_check.php");
+require("_info_.php");
+require("../../functions.php");
 
 // Checking POST & GET variables...
 if ($regex == 1) {
@@ -70,15 +71,14 @@ if ($logfile != "" and $action == "delete") {
     exec_fruitywifi($exec);
 }
 
-include "includes/options_config.php";
-
+require("includes/options_config.php");
 ?>
 
 <div class="rounded-top" align="left"> &nbsp; <b><?=$mod_alias?></b> </div>
 <div class="rounded-bottom">
 
     &nbsp;&nbsp;version <?=$mod_version?><br>
-    <?
+    <?php
     $isinstalled_curl = exec("dpkg-query -s php-curl|grep -iEe '^status.+installed'");
     $isinstalled_cli = exec("dpkg-query -s php-cli|grep -iEe '^status.+installed'");
     if ($isinstalled_curl != "" && $isinstalled_cli != "") {
@@ -86,9 +86,7 @@ include "includes/options_config.php";
     } else {
         echo "$mod_alias <a href='includes/module_action.php?install=install_autostart' style='color:red'>install</a><br>";
     }
-    ?>
 
-    <?
     $ismoduleup = exec($mod_isup);
     if ($ismoduleup != "") {
         echo "$mod_alias  <font color=\"lime\"><b>enabled</b></font>.&nbsp; | <a href=\"includes/module_action.php?service=responder&action=stop&page=module\"><b>stop</b></a>";
@@ -123,7 +121,7 @@ Loading, please wait...
             <form id="formLogs-Refresh" name="formLogs-Refresh" method="POST" autocomplete="off" action="index.php">
             <input type="submit" value="refresh">
             <br><br>
-            <?
+            <?php
                 if ($logfile != "" and $action == "view") {
                     $filename = $mod_logs_history.$logfile.".log";
                 } else {
@@ -153,7 +151,7 @@ Loading, please wait...
             <div c-lass="module-options" s-tyle="background-color:#000; border:1px dashed;">
             <table>
 
-                <?
+                <?php
                     $tmp = array_keys($opt_responder);
                     for ($i=0; $i< count($tmp); $i++) {
 
@@ -161,11 +159,11 @@ Loading, please wait...
                         ?>
 
                         <tr>
-                            <td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
+                            <td><input type="checkbox" name="options[]" value="<?=$opt?>" <?php if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
                             <td> .<?=$opt_responder[$opt][2]?></td>
                             <td></td>
                         </tr>
-                <?
+                <?php
                     }
                 ?>
 
@@ -175,7 +173,7 @@ Loading, please wait...
             <input type="hidden" name="type" value="opt_responder">
             </form>
             <br>
-            <?
+            <?php
                 $filename = "$mod_path/includes/mode_d.txt";
 
                 $data = open_file($filename);
@@ -190,7 +188,7 @@ Loading, please wait...
             <input type="submit" value="refresh">
             <br><br>
 
-            <?
+            <?php
             $logs = glob($mod_logs_history.'*.log');
             print_r($a);
 
@@ -210,7 +208,9 @@ Loading, please wait...
         <!-- ABOUT -->
 
         <div id="tab-about" class="history">
-            <? include "includes/about.php"; ?>
+            <?php
+                require("includes/about.php");
+            ?>
         </div>
 
         <!-- END ABOUT -->
@@ -312,7 +312,7 @@ Loading, please wait...
 
     </script>
 
-    <?
+    <?php
     if ($_GET["tab"] == 1) {
         echo "<script>";
         echo "$( '#result' ).tabs({ active: 1 });";

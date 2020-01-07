@@ -1,11 +1,11 @@
-<?
+<?php
 
-//include "../login_check.php";
-include "../../../config/config.php";
-include "../_info_.php";
-include "../../../functions.php";
+//require("../login_check.php");
+require("../../../config/config.php");
+require("../_info_.php");
+require("../../../functions.php");
 
-include "options_config.php";
+require("options_config.php");
 
 // Checking POST & GET variables...
 if ($regex == 1) {
@@ -63,5 +63,3 @@ if ($type == "opt_responder") {
 }
 
 header('Location: ../index.php');
-
-?>

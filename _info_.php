@@ -1,4 +1,4 @@
-<?
+<?php
 $mod_name="autostart";
 $mod_version="1.4";
 $mod_path="/usr/share/fruitywifi/www/modules/$mod_name";
@@ -20,4 +20,3 @@ $bin_chmod = "/bin/chmod";
 $bin_sed = "/bin/sed";
 $bin_rm = "/bin/rm";
 $bin_route = "/sbin/route";
-?>

@@ -1,4 +1,4 @@
-<?
+<?php
 $srv_port = "8000";
 $srv_https = "";
 $srv_dir = "/usr/share/fruitywifi/www/modules/autostart/includes";
@@ -35,7 +35,7 @@ curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookie.txt');
 //Execute the action to login
 $output = curl_exec($ch);
 
-include "$srv_dir/options_config.php";
+require("$srv_dir/options_config.php");
 
 //LOGS
 $date = date('Y-m-d H:i:s');
@@ -58,5 +58,3 @@ for ($i=0; $i< count($tmp); $i++) {
         exec($exec);
     }
 }
-
-?>

@@ -1,4 +1,4 @@
-<?
+<?php
 /*
     Copyright (C) 2013-2019 xtr4nge [_AT_] gmail.com
 
@@ -15,14 +15,13 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-?>
-<?
-//include "../login_check.php";
-include "../../../config/config.php";
-include "../_info_.php";
-include "../../../functions.php";
 
-include "options_config.php";
+//require("../login_check.php");
+require("../../../config/config.php");
+require("../_info_.php");
+require("../../../functions.php");
+
+require("options_config.php");
 
 // Checking POST & GET variables...
 if ($regex == 1) {
@@ -135,5 +134,3 @@ if ($page == "status") {
 }
 
 //header('Location: ../../action.php?page=ngrep');
-
-?>
