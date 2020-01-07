@@ -9,7 +9,6 @@ $mod_panel="show";
 $mod_isup="grep 'FruityWiFi-autostart.php' /etc/rc.local";
 $mod_alias="Autostart";
 # EXEC
-//$bin_danger = "/usr/share/fruitywifi/bin/danger"; // DEPRECATED
 $bin_sudo = "/usr/bin/sudo";
 $bin_sh = "/bin/sh";
 $bin_echo = "/bin_echo";
