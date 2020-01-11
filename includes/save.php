@@ -1,21 +1,21 @@
-<?
+<?php
 
-//include "../login_check.php";
-include "../../../config/config.php";
-include "../_info_.php";
-include "../../../functions.php";
+//require("../login_check.php");
+require("../../../config/config.php");
+require("../_info_.php");
+require("../../../functions.php");
 
-include "options_config.php";
+require("options_config.php");
 
 // Checking POST & GET variables...
 if ($regex == 1) {
-	regex_standard($_POST['type'], "../../../msg.php", $regex_extra);
-	regex_standard($_POST['tempname'], "../../../msg.php", $regex_extra);
-	regex_standard($_POST['action'], "../../../msg.php", $regex_extra);
-	regex_standard($_GET['mod_action'], "../../../msg.php", $regex_extra);
-	regex_standard($_GET['mod_service'], "../../../msg.php", $regex_extra);
-	regex_standard($_POST['new_rename'], "../../../msg.php", $regex_extra);
-	regex_standard($_POST['new_rename_file'], "../../../msg.php", $regex_extra);
+    regex_standard($_POST['type'], "../../../msg.php", $regex_extra);
+    regex_standard($_POST['tempname'], "../../../msg.php", $regex_extra);
+    regex_standard($_POST['action'], "../../../msg.php", $regex_extra);
+    regex_standard($_GET['mod_action'], "../../../msg.php", $regex_extra);
+    regex_standard($_GET['mod_service'], "../../../msg.php", $regex_extra);
+    regex_standard($_POST['new_rename'], "../../../msg.php", $regex_extra);
+    regex_standard($_POST['new_rename_file'], "../../../msg.php", $regex_extra);
 }
 
 $type = $_POST['type'];
@@ -33,28 +33,24 @@ if ($type == "opt_responder") {
 
     $tmp = array_keys($opt_responder);
     for ($i=0; $i< count($tmp); $i++) {
-        
+
         $exec = "/bin/sed -i 's/opt_responder\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\].*/opt_responder\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\] = 0;/g' options_config.php";
-        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
         $output = exec_fruitywifi($exec);
-        
+
         $exec = "/bin/sed -i 's/^".$tmp[$i].".*/".$tmp[$i]." = Off/g' Responder-master/Responder.conf";
-        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
         $output = exec_fruitywifi($exec);
-        
+
     }
 
     $tmp = $_POST["options"];
     for ($i=0; $i< count($tmp); $i++) {
-        
+
         $exec = "/bin/sed -i 's/opt_responder\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\].*/opt_responder\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\] = 1;/g' options_config.php";
-        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
         exec_fruitywifi($exec);
-        
+
         $exec = "/bin/sed -i 's/^".$tmp[$i].".*/".$tmp[$i]." = On/g' Responder-master/Responder.conf";
-        //exec("/usr/share/FruityWifi/bin/danger \"" . $exec . "\"", $output); //DEPRECATED
         exec_fruitywifi($exec);
-        
+
     }
 
     header('Location: ../index.php?tab=1');
@@ -63,5 +59,3 @@ if ($type == "opt_responder") {
 }
 
 header('Location: ../index.php');
-
-?>

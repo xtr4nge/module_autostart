@@ -1,4 +1,4 @@
-<?
+<?php
 
 //index 0 = on/off module
 //index 1 = ??
@@ -168,6 +168,3 @@ $opt_responder["M31"][0] = 0;
 $opt_responder["M31"][1] = 0;
 $opt_responder["M31"][2] = "WhatsApp";
 $opt_responder["M31"][3] = "/modules/whatsapp/includes/module_action.php?service=whatsapp&action=start&page=status";
-
-
-?>

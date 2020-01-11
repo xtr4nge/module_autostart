@@ -1,20 +1,20 @@
-<? 
+<?php
 /*
-	Copyright (C) 2013-2019 xtr4nge [_AT_] gmail.com
+    Copyright (C) 2013-2019 xtr4nge [_AT_] gmail.com
 
-	This program is free software: you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
 
-	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/ 
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -39,20 +39,21 @@ $(function() {
 </head>
 <body>
 
-<? include "../menu.php"; ?>
+<?php
+require("../menu.php");
+?>
 
 <br>
 
-<?
-
-include "../../config/config.php";
-include "../../login_check.php";
-include "_info_.php";
-include "../../functions.php";
+<?php
+require("../../config/config.php");
+require("../../login_check.php");
+require("_info_.php");
+require("../../functions.php");
 
 // Checking POST & GET variables...
 if ($regex == 1) {
-	regex_standard($_POST["newdata"], "msg.php", $regex_extra);
+    regex_standard($_POST["newdata"], "msg.php", $regex_extra);
     regex_standard($_GET["logfile"], "msg.php", $regex_extra);
     regex_standard($_GET["action"], "msg.php", $regex_extra);
     regex_standard($_POST["service"], "msg.php", $regex_extra);
@@ -70,15 +71,14 @@ if ($logfile != "" and $action == "delete") {
     exec_fruitywifi($exec);
 }
 
-include "includes/options_config.php";
-
+require("includes/options_config.php");
 ?>
 
 <div class="rounded-top" align="left"> &nbsp; <b><?=$mod_alias?></b> </div>
 <div class="rounded-bottom">
 
     &nbsp;&nbsp;version <?=$mod_version?><br>
-    <? 
+    <?php
     $isinstalled_curl = exec("dpkg-query -s php-curl|grep -iEe '^status.+installed'");
     $isinstalled_cli = exec("dpkg-query -s php-cli|grep -iEe '^status.+installed'");
     if ($isinstalled_curl != "" && $isinstalled_cli != "") {
@@ -86,14 +86,12 @@ include "includes/options_config.php";
     } else {
         echo "$mod_alias <a href='includes/module_action.php?install=install_autostart' style='color:red'>install</a><br>";
     }
-    ?>
-    
-    <?
+
     $ismoduleup = exec($mod_isup);
     if ($ismoduleup != "") {
         echo "$mod_alias  <font color=\"lime\"><b>enabled</b></font>.&nbsp; | <a href=\"includes/module_action.php?service=responder&action=stop&page=module\"><b>stop</b></a>";
-    } else { 
-        echo "$mod_alias  <font color=\"red\"><b>disabled</b></font>. | <a href=\"includes/module_action.php?service=responder&action=start&page=module\"><b>start</b></a>"; 
+    } else {
+        echo "$mod_alias  <font color=\"red\"><b>disabled</b></font>. | <a href=\"includes/module_action.php?service=responder&action=start&page=module\"><b>start</b></a>";
     }
     ?>
 
@@ -116,31 +114,31 @@ Loading, please wait...
             <li><a href="#tab-history">History</a></li>
             <li><a href="#tab-about">About</a></li>
         </ul>
-        
+
         <!-- OUTPUT -->
 
         <div id="tab-output">
             <form id="formLogs-Refresh" name="formLogs-Refresh" method="POST" autocomplete="off" action="index.php">
             <input type="submit" value="refresh">
             <br><br>
-            <?
+            <?php
                 if ($logfile != "" and $action == "view") {
                     $filename = $mod_logs_history.$logfile.".log";
                 } else {
                     $filename = $mod_logs;
                 }
-            
+
                 $data = open_file($filename);
-                
+
                 // REVERSE
                 //$data_array = explode("\n", $data);
                 //$data = implode("\n",array_reverse($data_array));
-                
+
             ?>
             <textarea id="output" class="module-content" style="font-family: courier;"><?=htmlspecialchars($data)?></textarea>
             <input type="hidden" name="type" value="logs">
             </form>
-            
+
         </div>
 
         <!-- OPTIONS -->
@@ -149,39 +147,39 @@ Loading, please wait...
             <form id="formInject" name="formInject" method="POST" autocomplete="off" action="includes/save.php">
             <input type="submit" value="save">
             <br><br>
-            
+
             <div c-lass="module-options" s-tyle="background-color:#000; border:1px dashed;">
             <table>
-				
-				<?
-					$tmp = array_keys($opt_responder);
-					for ($i=0; $i< count($tmp); $i++) {
-						
-						$opt = "M".$i;
-						?>
-						
-						<tr>
-							<td><input type="checkbox" name="options[]" value="<?=$opt?>" <? if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
-							<td> .<?=$opt_responder[$opt][2]?></td>
-							<td></td>
-						</tr>
-				<?
-					}
-				?>
-				
+
+                <?php
+                    $tmp = array_keys($opt_responder);
+                    for ($i=0; $i< count($tmp); $i++) {
+
+                        $opt = "M".$i;
+                        ?>
+
+                        <tr>
+                            <td><input type="checkbox" name="options[]" value="<?=$opt?>" <?php if ($opt_responder[$opt][0] == "1") echo "checked" ?> ></td>
+                            <td> .<?=$opt_responder[$opt][2]?></td>
+                            <td></td>
+                        </tr>
+                <?php
+                    }
+                ?>
+
             </table>
             </div>
 
             <input type="hidden" name="type" value="opt_responder">
             </form>
             <br>
-            <?
+            <?php
                 $filename = "$mod_path/includes/mode_d.txt";
-                
+
                 $data = open_file($filename);
-                
+
             ?>
-            
+
         </div>
 
         <!-- HISTORY -->
@@ -189,8 +187,8 @@ Loading, please wait...
         <div id="tab-history">
             <input type="submit" value="refresh">
             <br><br>
-            
-            <?
+
+            <?php
             $logs = glob($mod_logs_history.'*.log');
             print_r($a);
 
@@ -202,19 +200,21 @@ Loading, please wait...
                 echo "<br>";
             }
             ?>
-            
+
         </div>
-        
-        <!-- END HISTORY -->  
-        
+
+        <!-- END HISTORY -->
+
         <!-- ABOUT -->
-    
+
         <div id="tab-about" class="history">
-            <? include "includes/about.php"; ?>
+            <?php
+                require("includes/about.php");
+            ?>
         </div>
-        
-        <!-- END ABOUT -->  
-        
+
+        <!-- END ABOUT -->
+
     </div>
 
     <div id="loading" class="ui-widget" style="width:100%;background-color:#000; padding-top:4px; padding-bottom:4px;color:#FFF">
@@ -236,11 +236,11 @@ Loading, please wait...
                 $.each(data, function (index, value) {
                     $("#output").append( value ).append("\n");
                 });
-                
+
                 $('#loading').hide();
             }
         });
-        
+
         $('#output').html('');
         $('#loading').show();
 
@@ -267,12 +267,12 @@ Loading, please wait...
                         $("#output").append( value ).append("\n");
                     }
                 });
-                
+
                 $('#loading').hide();
 
             }
         });
-        
+
         $('#output').html('');
         $('#loading').show();
 
@@ -297,12 +297,12 @@ Loading, please wait...
                 $.each(data, function (index, value) {
                     $("#inject").append( value ).append("\n");
                 });
-                
+
                 $('#loading').hide();
-                
+
             }
         });
-        
+
         $('#output').html('');
         $('#loading').show();
 
@@ -312,7 +312,7 @@ Loading, please wait...
 
     </script>
 
-    <?
+    <?php
     if ($_GET["tab"] == 1) {
         echo "<script>";
         echo "$( '#result' ).tabs({ active: 1 });";
@@ -329,7 +329,7 @@ Loading, please wait...
         echo "<script>";
         echo "$( '#result' ).tabs({ active: 4 });";
         echo "</script>";
-    } 
+    }
     ?>
 
 </div>
